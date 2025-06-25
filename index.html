@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cleveland Security Pros | Security Camera Installation</title>
-    <meta name="description" content="Professional security camera installation in Cleveland and surrounding areas.">
-    <meta name="keywords" content="security cameras, Cleveland, installation, Arlo, Ring, Blink">
+    <meta name="description" content="Expert security camera installation in Cleveland and 100+ surrounding cities. Protect your home or business with top brands like Ring, Arlo, and Blink.">
+    <meta name="keywords" content="security cameras, Cleveland, installation, Ring, Arlo, Blink, home security">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
     <style>
         * {
@@ -15,9 +15,10 @@
         }
         body {
             font-family: 'Inter', sans-serif;
-            background-color: #0a0a1a;
+            background: linear-gradient(180deg, #0a0a1a 0%, #1a1a3a 100%);
             color: #fff;
             line-height: 1.6;
+            overflow-x: hidden;
         }
         .container {
             max-width: 1200px;
@@ -25,11 +26,13 @@
             padding: 0 20px;
         }
         header {
-            background: #0a0a1a;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
-            position: sticky;
+            background: rgba(10, 10, 26, 0.9);
+            backdrop-filter: blur(10px);
+            position: fixed;
+            width: 100%;
             top: 0;
             z-index: 100;
+            box-shadow: 0 4px 10px rgba(0, 240, 255, 0.2);
         }
         nav {
             display: flex;
@@ -38,78 +41,119 @@
             padding: 20px 0;
         }
         .logo {
-            font-size: 24px;
+            font-size: 28px;
             font-weight: 800;
             color: #00f0ff;
-            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            transition: transform 0.3s;
+        }
+        .logo:hover {
+            transform: scale(1.1);
         }
         nav ul {
             list-style: none;
             display: flex;
-            gap: 20px;
+            gap: 30px;
         }
         nav a {
             color: #fff;
             text-decoration: none;
+            font-weight: 600;
+            position: relative;
             transition: color 0.3s;
+        }
+        nav a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background: #00f0ff;
+            bottom: -5px;
+            left: 0;
+            transition: width 0.3s;
+        }
+        nav a:hover::after {
+            width: 100%;
         }
         nav a:hover {
             color: #00f0ff;
         }
         .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
             text-align: center;
-            padding: 100px 20px;
-            background: linear-gradient(180deg, #0a0a1a, #1a1a3a);
+            background: linear-gradient(45deg, #0a0a1a, #1a1a3a);
+            position: relative;
+            overflow: hidden;
+        }
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle, rgba(0, 240, 255, 0.2) 0%, transparent 70%);
+            animation: pulse 10s infinite;
         }
         .hero h1 {
-            font-size: 48px;
+            font-size: 60px;
             font-weight: 800;
             color: #00f0ff;
+            text-shadow: 0 0 20px rgba(0, 240, 255, 0.5);
             margin-bottom: 20px;
-            animation: slideIn 1s ease-out;
+            animation: slideIn 1.5s ease-out;
         }
         .hero p {
-            font-size: 20px;
-            margin-bottom: 30px;
-            animation: slideIn 1s ease-out 0.2s;
+            font-size: 24px;
+            max-width: 600px;
+            margin: 0 auto 30px;
+            animation: slideIn 1.5s ease-out 0.3s;
             animation-fill-mode: both;
         }
         .btn {
             display: inline-block;
-            padding: 15px 30px;
+            padding: 15px 40px;
             background: #00f0ff;
             color: #0a0a1a;
             font-weight: 600;
             border-radius: 50px;
             text-decoration: none;
-            transition: transform 0.3s, background 0.3s;
-            animation: popIn 0.5s ease-out 0.4s;
+            transition: all 0.3s;
+            box-shadow: 0 0 15px rgba(0, 240, 255, 0.5);
+            animation: popIn 1s ease-out 0.6s;
             animation-fill-mode: both;
         }
         .btn:hover {
             background: #fff;
-            transform: scale(1.05);
+            transform: translateY(-5px);
+            box-shadow: 0 0 25px rgba(0, 240, 255, 0.8);
         }
         .camera-list {
-            padding: 80px 20px;
+            padding: 100px 20px;
+            background: #0a0a1a;
         }
         .camera-list h2 {
             text-align: center;
-            font-size: 36px;
+            font-size: 40px;
             color: #00f0ff;
-            margin-bottom: 40px;
+            margin-bottom: 60px;
+            text-shadow: 0 0 10px rgba(0, 240, 255, 0.5);
         }
         .grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
+            gap: 40px;
         }
         .camera-card {
-            background: #1a1a3a;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-            transition: transform 0.3s, box-shadow 0.3s;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            padding: 30px;
+            border-radius: 15px;
+            border: 1px solid rgba(0, 240, 255, 0.2);
+            transition: transform 0.5s, box-shadow 0.5s;
             animation: fadeInUp 0.5s ease-out;
             animation-fill-mode: both;
         }
@@ -117,43 +161,44 @@
         .camera-card:nth-child(2) { animation-delay: 0.2s; }
         .camera-card:nth-child(3) { animation-delay: 0.4s; }
         .camera-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 5px 15px rgba(0, 240, 255, 0.5);
-        }
-        .camera-card img {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
-            border-radius: 10px;
-            margin-bottom: 15px;
+            transform: translateY(-15px);
+            box-shadow: 0 10px 30px rgba(0, 240, 255, 0.4);
         }
         .camera-card h3 {
-            font-size: 24px;
-            margin-bottom: 10px;
+            font-size: 28px;
+            margin-bottom: 15px;
+            color: #00f0ff;
         }
         .camera-card p {
             color: #bbb;
-            margin-bottom: 10px;
+            margin-bottom: 15px;
         }
         .camera-card .expertise {
             color: #00f0ff;
             font-weight: 600;
         }
         .contact {
-            padding: 80px 20px;
-            background: #0a0a1a;
+            padding: 100px 20px;
+            background: linear-gradient(180deg, #0a0a1a, #1a1a3a);
+            position: relative;
         }
         .contact h2 {
             text-align: center;
-            font-size: 36px;
+            font-size: 40px;
             color: #00f0ff;
-            margin-bottom: 40px;
-            animation: slideIn 1s ease-out;
+            margin-bottom: 60px;
+            text-shadow: 0 0 10px rgba(0, 240, 255, 0.5);
+            animation: slideIn 1.5s ease-out;
         }
         form {
             max-width: 600px;
             margin: 0 auto;
-            animation: fadeInUp 1s ease-out 0.2s;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            padding: 30px;
+            border-radius: 15px;
+            border: 1px solid rgba(0, 240, 255, 0.2);
+            animation: fadeInUp 1.5s ease-out 0.3s;
             animation-fill-mode: both;
         }
         .form-group {
@@ -163,19 +208,22 @@
             display: block;
             margin-bottom: 5px;
             font-weight: 600;
+            color: #00f0ff;
         }
         input, textarea {
             width: 100%;
-            padding: 10px;
-            background: #1a1a3a;
-            border: 1px solid #444;
+            padding: 12px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(0, 240, 255, 0.3);
             border-radius: 5px;
             color: #fff;
             font-size: 16px;
+            transition: border-color 0.3s;
         }
         input:focus, textarea:focus {
             border-color: #00f0ff;
             outline: none;
+            box-shadow: 0 0 10px rgba(0, 240, 255, 0.5);
         }
         button {
             width: 100%;
@@ -186,16 +234,18 @@
             border: none;
             border-radius: 5px;
             cursor: pointer;
-            transition: background 0.3s;
+            transition: all 0.3s;
+            box-shadow: 0 0 15px rgba(0, 240, 255, 0.5);
         }
         button:hover {
             background: #fff;
+            transform: translateY(-5px);
         }
         footer {
-            background: #0a0a1a;
-            padding: 20px;
+            background: rgba(10, 10, 26, 0.9);
+            padding: 30px;
             text-align: center;
-            border-top: 1px solid #444;
+            border-top: 1px solid rgba(0, 240, 255, 0.2);
         }
         footer p {
             margin-bottom: 10px;
@@ -203,8 +253,10 @@
         footer a {
             color: #00f0ff;
             text-decoration: none;
+            transition: color 0.3s;
         }
         footer a:hover {
+            color: #fff;
             text-decoration: underline;
         }
         @keyframes slideIn {
@@ -219,10 +271,34 @@
             from { opacity: 0; transform: translateY(20px); }
             to { opacity: 1; transform: translateY(0); }
         }
+        @keyframes pulse {
+            0% { transform: scale(1); opacity: 0.5; }
+            50% { transform: scale(1.2); opacity: 0.2; }
+            100% { transform: scale(1); opacity: 0.5; }
+        }
+        .parallax {
+            perspective: 1px;
+            height: 100vh;
+            overflow-x: hidden;
+            overflow-y: auto;
+        }
+        .parallax-layer {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+        }
+        .parallax-layer-back {
+            transform: translateZ(-1px) scale(2);
+            background: radial-gradient(circle, rgba(0, 240, 255, 0.1) 0%, transparent 70%);
+        }
         @media (max-width: 768px) {
-            .hero h1 { font-size: 36px; }
+            .hero h1 { font-size: 40px; }
             .hero p { font-size: 18px; }
-            .camera-list h2, .contact h2 { font-size: 28px; }
+            .camera-list h2, .contact h2 { font-size: 32px; }
+            nav ul { gap: 15px; }
+            .logo { font-size: 20px; }
         }
     </style>
 </head>
@@ -234,41 +310,41 @@
                 <li><a href="#">Home</a></li>
                 <li><a href="#contact">Contact</a></li>
                 <li><a href="lakewood-security-cameras.html">Lakewood</a></li>
+                <li><a href="parma-security-cameras.html">Parma</a></li>
             </ul>
         </nav>
     </header>
-    <section class="hero">
-        <div class="container">
-            <h1>Top Security Camera Installation in Cleveland</h1>
-            <p>Expert installation of the best security cameras for your home or business.</p>
-            <a href="#contact" class="btn">Get a Quote</a>
-        </div>
-    </section>
+    <div class="parallax">
+        <div class="parallax-layer parallax-layer-back"></div>
+        <section class="hero">
+            <div class="container">
+                <h1>Premier Security Camera Installation in Cleveland</h1>
+                <p>Protect your home or business with expert installation of top-tier security systems across Cleveland and 100+ nearby cities.</p>
+                <a href="#contact" class="btn">Get a Free Quote</a>
+            </div>
+        </section>
+    </div>
     <section class="camera-list">
         <div class="container">
-            <h2>Our Expertise in Top Security Cameras</h2>
+            <h2>Our Expertise in Top Security Camera Brands</h2>
             <div class="grid">
                 <div class="camera-card">
-                    <img src="https://via.placeholder.com/300x200?text=Arlo+Pro+5S" alt="Arlo Pro 5S Security Camera">
-                    <h3>Arlo Pro 5S</h3>
-                    <p>High-resolution 4K video with advanced night vision.</p>
-                    <p class="expertise">Our team is certified in Arlo installations, ensuring seamless integration with your smart home.</p>
+                    <h3>Ring Cleveland Installers</h3>
+                    <p>Motion-activated LED spotlights and 1080p HD video for ultimate home security.</p>
+                    <p class="expertise">Our certified technicians specialize in Ring ecosystems, ensuring seamless integration and maximum coverage.</p>
                 </div>
                 <div class="camera-card">
-                    <img src="https://via.placeholder.com/300x200?text=Ring+Spotlight+Cam" alt="Ring Spotlight Cam">
-                    <h3>Ring Spotlight Cam</h3>
-                    <p>Motion-activated LED spotlights and 1080p HD video.</p>
-                    <p class="expertise">We specialize in Ring ecosystems, offering custom setups for maximum coverage.</p>
+                    <h3>Arlo Cleveland Installers</h3>
+                    <p>High-resolution 4K video with advanced night vision for crystal-clear footage.</p>
+                    <p class="expertise">We’re Arlo pros, delivering tailored installations for your smart home or business.</p>
                 </div>
                 <div class="camera-card">
-                    <img src="https://via.placeholder.com/300x200?text=Blink+Outdoor+4" alt="Blink Outdoor 4">
-                    <h3>Blink Outdoor 4</h3>
-                    <p>Wireless, weather-resistant camera with two-year battery life.</p>
-                    <p class="expertise">Expert Blink installations with optimized placement for your property.</p>
+                    <h3>Blink Cleveland Installers</h3>
+                    <p>Wireless, weather-resistant cameras with two-year battery life for hassle-free security.</p>
+                    <p class="expertise">Expert Blink installations with strategic placement for optimal property protection.</p>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
     <section id="contact" class="contact">
         <div class="container">
             <h2>Contact Us for Cleveland Security Camera Installation</h2>
@@ -300,7 +376,7 @@
         </div>
     </footer>
     <script>
-        // Smooth scrolling for anchor links
+        // Smooth scrolling
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function(e) {
                 e.preventDefault();
@@ -320,6 +396,13 @@
                 e.preventDefault();
                 alert('Please fill out all fields.');
             }
+        });
+
+        // Parallax effect
+        window.addEventListener('scroll', () => {
+            const parallax = document.querySelector('.parallax-layer-back');
+            const scrollPosition = window.pageYOffset;
+            parallax.style.transform = `translateZ(-1px) scale(2) translateY(${scrollPosition * 0.5}px)`;
         });
     </script>
 </body>
